@@ -69,5 +69,5 @@ Add inputs as below (```Light On: Yes/No```, ```Brightness: number```, ```Red: n
 
 Open Microsoft Flow App in mobile phone and test
 
-![](images/11.png)
-![](images/12.png)
+![](images/11.jpeg)
+![](images/12.jpeg)
