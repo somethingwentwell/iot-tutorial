@@ -55,19 +55,19 @@ Default Internet Time Server is pool.ntp.org -> cn.pool.ntp.org -> europe.pool.n
 1. Sign in [Azure Portal](https://portal.azure.com/)
 2. Click ```Create a resource``` and search ```IoT Central Application```
 
-![](images/13.png)
+![](images/13.PNG)
 
 3. Create ```IoT Central Application```
 
-![](images/14.png)
+![](images/14.PNG)
 
 4. Fill in ```resource name```, ```Application URL```, and set template as ```Custom Application```. Then click ```create```.
 
-![](images/15.png)
+![](images/15.PNG)
 
 5. Go to the resource, mark down your ```IoT Application URL```
 
-![](images/16.png)
+![](images/16.PNG)
 
 # Step 4 - Create IoT Central device template
 
@@ -140,7 +140,7 @@ Click ```Shutdown``` button.
 
 1. Go to [OneDrive](https://onedrive.live.com/) and create Excel workbook
 
-![](images/11.png)
+![](images/11.PNG)
 
 2. Follow the column name below
 
@@ -149,7 +149,7 @@ Click ```Shutdown``` button.
 
 3. Click ```Format as Table```
 
-![](images/12.png)
+![](images/12.PNG)
 
 
 # Step 8 - Create event-based rule
@@ -157,16 +157,16 @@ Click ```Shutdown``` button.
 1. Access ```IoT Application URL```
 2. To add a new event-based rule to your application, in the left navigation menu, select Device Templates.
 
-![](images/17.png)
+![](images/17.PNG)
 
 3. To customize your device template, select the template you created in the previous tutorial.
 4. To add a event-based rule in the Rules view, select Rules, select + New Rule, and then select Event:
 
-![](images/18.png)
+![](images/18.PNG)
 
 5. To define your rule, use the information in the following image:
 
-![](images/19.png)
+![](images/19.PNG)
 
 6. Click ```Save```
 
@@ -174,25 +174,25 @@ Click ```Shutdown``` button.
 
 1. Add Microsoft Flow Action in saved event rule
 
-![](images/20.png)
+![](images/20.PNG)
 
 2. Create Flow from blank in Microsoft Flow page
 
-![](images/21.png)
-![](images/22.png)
+![](images/21.PNG)
+![](images/22.PNG)
 
 3. Search ```IoT Central``` and click ```When a rule is fired```
 
-![](images/23.png)
+![](images/23.PNG)
 
 4. Click the dropdown and select the ```Application``` and ```Rule```
 
-![](images/24.png)
+![](images/24.PNG)
 
 5. Search ```Excel``` and add an action ```Add a row in a table```
 
-![](images/25.png)
+![](images/25.PNG)
 
 6. Follow the information in below image and complete the Flow 
 
-![](images/26.png)
+![](images/26.PNG)

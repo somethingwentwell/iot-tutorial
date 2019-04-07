@@ -12,23 +12,23 @@ Prerequisites:
 
 Sign in to [Microsoft Flow](https://flow.microsoft.com/) and create new flow in ```My flows```
 
-![](images/1.png)
+![](images/1.PNG)
 
 Click ```Create from black```
 
-![](images/2.png)
+![](images/2.PNG)
 
-![](images/3.png)
+![](images/3.PNG)
 
 # Add Microsoft Flow trigger
 
 Search ```flow``` in search bar, then select ```Manually trigger a flow```
 
-![](images/4.png)
+![](images/4.PNG)
 
 Add inputs as below (```Light On: Yes/No```, ```Brightness: number```, ```Red: number```, ```Green: number```, ```Blue: number```)
 
-![](images/5.png)
+![](images/5.PNG)
 
 # Add Microsoft Flow action
 
@@ -37,23 +37,23 @@ Add inputs as below (```Light On: Yes/No```, ```Brightness: number```, ```Red: n
 3. Search ```Yeelight```
 4. Select ```Discover```
 
-![](images/6.png)
+![](images/6.PNG)
 
 5. Repeat **1-4**
 6. Select ```Switch```
 7. Click ```did``` text field and select ```did``` in dynamic content
 
-![](images/7.png)
+![](images/7.PNG)
 
 8. Fill in the rest like image below
 
-![](images/8.png)
+![](images/8.PNG)
 
 9. Repeat **1-4**
 10. Select ```Brightness```
 11. Fill in the rest like image below
 
-![](images/9.png)
+![](images/9.PNG)
 
 9. Repeat **1-4**
 10. Select ```Color```
@@ -61,7 +61,7 @@ Add inputs as below (```Light On: Yes/No```, ```Brightness: number```, ```Red: n
 
 ```add(add(mul(triggerBody()['number_1'], 65536), mul(triggerBody()['number_2'], 256)), triggerBody()['number_3'])```
 
-![](images/10.png)
+![](images/10.PNG)
 
 *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
 
