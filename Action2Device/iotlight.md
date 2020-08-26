@@ -21,16 +21,16 @@ A "Build an instant flow" box will show, click ```skip```.
 ## Choose the flow trigger
 
 In search bar, type ```flow```, select the trigger ```Manually trigger a flow```.
-<img src="images/trigger01.png" alt="click manually trigger a flow" width="500"/>
+<img src="images/01.png" alt="click manually trigger a flow" width="500"/>
 
 Click ```Add an input```.
-<img src="images/trigger02.png" alt="add an input" width="500"/>
+<img src="images/02.png" alt="add an input" width="500"/>
 
 Choose ```Yes/No``` for Light On option.
-<img src="images/trigger03.png" alt="choose the input type" width="500"/>
+<img src="images/03.png" alt="choose the input type" width="500"/>
 
 Choose ```Number``` for Brightness, Red, Green, Blue options.
-<img src="images/trigger04.png" alt="choose the input type" width="500"/>
+<img src="images/04.png" alt="choose the input type" width="500"/>
 
 Add different input options as below:
 - Light On: Yes/No
@@ -39,14 +39,14 @@ Add different input options as below:
 - Green: 0-255
 - Blue: 0-255
 
-<img src="images/trigger05.png" alt="type in inputs" width="500"/>
+<img src="images/05.png" alt="type in inputs" width="500"/>
 
 ## Add Yeelight Discover action
 1. Click ```+ New step```
 2. In search bar, search ```Yeelight```
 3. Select ```Discover```
 
-<img src="images/trigger06.png" alt="Yeelight Discover" width="500"/>
+<img src="images/06.png" alt="Yeelight Discover" width="500"/>
 
 You need to sign in with your Mi Account.
 
@@ -55,40 +55,61 @@ You need to sign in with your Mi Account.
 2. In search bar, search ```Yeelight```
 3. Select ```Brightness```
 
-<img src="images/trigger07.png" alt="Yeelight Brightness" width="500"/>
+<img src="images/07.png" alt="Yeelight Brightness" width="500"/>
 
 4. In ```Dynamic content```, add ```did``` under the field ```Discover```
 
-<img src="images/trigger08.png" alt="Yeelight add did" width="500"/>
+<img src="images/08.png" alt="Yeelight add did" width="500"/>
 
-5. The block will be added into "Apply to each", click on ```Brightness(Preview)``` expend the block
+5. The block will be added into "Apply to each", click on ```Brightness(Preview)``` expend the block and add ```Brightness``` from ```Dynamic content: Menually trigger a flow```, add ```region``` and ```type``` from ```Dynamic content: Discover```
 
+<img src="images/09.png" alt="Yeelight add region, type" width="500"/>
 
+## Add Yeelight Color action
+1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="90"/>
+2. In search bar, search ```Yeelight```
+3. Select ```Color```
+4. Fill in ```did```, ```region``` and ```type``` from ```Dynamic content: Discover``` as below:
 
----
-8. Fill in the rest like image below
+<img src="images/10.png" alt="Yeelight add region, type" width="500"/>
 
-![](images/8.PNG)
-
-9. Repeat **1-4**
-10. Select ```Brightness```
-11. Fill in the rest like image below
-
-![](images/9.PNG)
-
-9. Repeat **1-4**
-10. Select ```Color```
-11. Fill in the rest like image below. The fomula is
+5. In ```spectrumRGB```, click the tab ```Expression```
+6. In ```fx``` field, copy and paste the formula[^1]:
 
 ```add(add(mul(triggerBody()['number_1'], 65536), mul(triggerBody()['number_2'], 256)), triggerBody()['number_3'])```
 
-![](images/10.PNG)
+<img src="images/11.png" alt="Yeelight add region, type" width="500"/>
 
-*RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
+7. Click ```OK```
+
+<img src="images/12.png" alt="Yeelight add region, type" width="300"/>
+
+## Add Yeelight Switch action
+1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="90"/>
+2. In search bar, search ```Yeelight```
+3. Select ```Switch```
+4. Fill in ```did```, ```region```, ```type``` form ```Dynamic content: Discover```
+5. In the field ```on```, click ```Enter custom value``` then select ```Light On``` from ```Dynamic content: Manually trigger a flow```
+
+<img src="images/13.png" alt="Yeelight add region, type" width="500"/>
+
+## Name and save the flow
+1. Click ```Untitled``` on the left hand top to change your flow's name
+2. Click ```Save``` on the right hand top to save all the changes
+
+<img src="images/14.png" alt="Yeelight add region, type" width="500"/>
 
 ## Test Microsoft Flow
 
-Open Microsoft Flow App in mobile phone and test
+1. Open Microsoft Power Automate App <img src="images/powerautomatelogo.png" alt="Power Automate App" width="30"/> and login with "onmicrosoft" account
+
+2. Click ```Buttons``` tab and you will see your flow button on the screen
+
+3. Click the flow button and try to control your light
 
 ![](images/11.jpeg)
 ![](images/12.jpeg)
+
+---
+
+[^1] *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
