@@ -72,15 +72,15 @@ You need to sign in with your Mi Account.
 <img src="images/09.png" alt="Yeelight add region, type" width="500"/>
 
 ## Add Yeelight Color action
-1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="90"/>
+1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="100"/>
 2. In search bar, search ```Yeelight```
 3. Select ```Color```
 4. Fill in ```did```, ```region``` and ```type``` from ```Dynamic content: Discover``` as below:
 
-<img src="images/10.png" alt="Yeelight add region, type" width="500"/>
+<img src="images/10.png" alt="Yeelight add" width="500"/>
 
 5. In ```spectrumRGB```, click the tab ```Expression```
-6. In ```fx``` field, copy and paste the formula[^1]:
+6. In ```fx``` field, copy and paste the formula<sup><a herf="#1">1</a></sup>:
 
 ```add(add(mul(triggerBody()['number_1'], 65536), mul(triggerBody()['number_2'], 256)), triggerBody()['number_3'])```
 
@@ -91,7 +91,7 @@ You need to sign in with your Mi Account.
 <img src="images/12.png" alt="Yeelight add region, type" width="300"/>
 
 ## Add Yeelight Switch action
-1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="90"/>
+1. Inside the "Apply to each", click <img src="images/addaction.png" alt="Yeelight add region, type" width="100"/>
 2. In search bar, search ```Yeelight```
 3. Select ```Switch```
 4. Fill in ```did```, ```region```, ```type``` form ```Dynamic content: Discover```
@@ -111,11 +111,12 @@ You need to sign in with your Mi Account.
 
 2. Click ```Buttons``` tab and you will see your flow button on the screen
 
+<img src="images/15.png" alt="Buttons" width="300"/>
+
 3. Click the flow button and try to control your light
 
-![](images/11.jpeg)
-![](images/12.jpeg)
+<img src="images/16.png" alt="Flow Button info" width="300"/>
 
 ---
 
-[^1] *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
+<sup>[1](#1)</sup> *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
