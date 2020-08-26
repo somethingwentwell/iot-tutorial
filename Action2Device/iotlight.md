@@ -2,17 +2,19 @@
 
 This is a tutorial to build solution with IoT light which integrate with Microsoft Flow. You can keep them around your home and track data about your daily life.
 
+This tutorial will 
+
 Prerequisites:
-1. [Mi Home Account](https://account.xiaomi.com/)
-2. Registed YeeLight in Mi Home App
-3. [Microsoft Flow Account](https://flow.microsoft.com/)
-4. Microsoft Flow App (Android/iOS)
+1. Get a Mi Account in [Mi Home](https://account.xiaomi.com/)
+2. Download Yeelight App <img src="images/yeelightlogo.png" alt="Yeelight App" width="30"/> and login with Mi Account
+3. Login [Microsoft Power Automate](https://asia.flow.microsoft.com/en-us/) with "onmicrosoft" account
+4. Download Microsoft Power Automate App <img src="images/powerautomatelogo.png" alt="Power Automate App" width="30"/> and login with "onmicrosoft" account
 
-# Create a new Microsoft Flow
+# Create a new Microsoft Power Automate
 
-Sign in to [Microsoft Flow](https://flow.microsoft.com/) and create new flow in ```My flows```
+In [Power Automate](https://asia.flow.microsoft.com/en-us/), goto the tab "Create" and choose the "Start from blank - Instant flow"
 
-![](images/1.PNG)
+<img src="images/create.png" alt="Create flow" width="500"/>
 
 Click ```Create from black```
 
