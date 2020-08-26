@@ -12,27 +12,33 @@ This tutorial will
 
 ## Create a new flow
 
-In [Power Automate](https://asia.flow.microsoft.com/en-us/), goto "Create" and click ```Instant flow```.
+1. In [Power Automate](https://asia.flow.microsoft.com/en-us/), goto "Create" and click ```Instant flow```
+
 <img src="images/create.png" alt="Create flow" width="500"/>
 
-A "Build an instant flow" box will show, click ```skip```.
+2. A "Build an instant flow" box will show, click ```skip```
+
 <img src="images/create2.png" alt="skip flow" width="500"/>
 
 ## Choose the flow trigger
 
-In search bar, type ```flow```, select the trigger ```Manually trigger a flow```.
+1. In search bar, type ```flow```, select the trigger ```Manually trigger a flow```
+
 <img src="images/01.png" alt="click manually trigger a flow" width="500"/>
 
-Click ```Add an input```.
+2. Click ```Add an input```
+
 <img src="images/02.png" alt="add an input" width="500"/>
 
-Choose ```Yes/No``` for Light On option.
+3. Choose ```Yes/No``` for Light On option
+
 <img src="images/03.png" alt="choose the input type" width="500"/>
 
-Choose ```Number``` for Brightness, Red, Green, Blue options.
+4. Choose ```Number``` for Brightness, Red, Green, Blue options
+
 <img src="images/04.png" alt="choose the input type" width="500"/>
 
-Add different input options as below:
+5. Add different input options as below:
 - Light On: Yes/No
 - Brightness: 1-100
 - Red: 0-255
