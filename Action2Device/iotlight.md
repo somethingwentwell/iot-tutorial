@@ -77,10 +77,10 @@ You need to sign in with your Mi Account.
 3. Select ```Color```
 4. Fill in ```did```, ```region``` and ```type``` from ```Dynamic content: Discover``` as below:
 
-<img src="images/10.png" alt="Yeelight add" width="500"/>
+<img src="images/10.png" alt="Yeelight" width="500"/>
 
 5. In ```spectrumRGB```, click the tab ```Expression```
-6. In ```fx``` field, copy and paste the formula<sup><a name="#1">1</a></sup>:
+6. In ```fx``` field, copy and paste the formula<sup>[#1](#1)</sup>:
 
 ```add(add(mul(triggerBody()['number_1'], 65536), mul(triggerBody()['number_2'], 256)), triggerBody()['number_3'])```
 
@@ -119,4 +119,4 @@ You need to sign in with your Mi Account.
 
 ---
 
-[^1](#1) *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
+[#1](#1) *RGB (Red, Green, Blue) are 8 bit each. The range for each individual colour is 0-255 (as 2^8 = 256 possibilities). The combination range is 256*256*256.*
