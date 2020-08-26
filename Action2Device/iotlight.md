@@ -10,36 +10,45 @@ Prerequisites:
 3. Login [Microsoft Power Automate](https://asia.flow.microsoft.com/en-us/) with "onmicrosoft" account
 4. Download Microsoft Power Automate App <img src="images/powerautomatelogo.png" alt="Power Automate App" width="30"/> and login with "onmicrosoft" account
 
-# Create a new Microsoft Power Automate
+# Create a new flow
 
-In [Power Automate](https://asia.flow.microsoft.com/en-us/), goto the tab "Create" and choose the "Start from blank - Instant flow"
-
+In [Power Automate](https://asia.flow.microsoft.com/en-us/), goto "Create" and click ```Instant flow```.
 <img src="images/create.png" alt="Create flow" width="500"/>
 
-Click ```Create from black```
+A "Build an instant flow" box will show, click ```skip```.
+<img src="images/create2.png" alt="skip flow" width="500"/>
 
-![](images/2.PNG)
+# Choose the flow trigger
 
-![](images/3.PNG)
+In search bar, type ```flow```, select the trigger ```Manually trigger a flow```.
+<img src="images/trigger.png" alt="click manually trigger a flow" width="500"/>
 
-# Add Microsoft Flow trigger
+Click ```Add an input```.
+<img src="images/trigger2.png" alt="add an input" width="500"/>
 
-Search ```flow``` in search bar, then select ```Manually trigger a flow```
+Choose ```Yes/No``` for Light On option.
+<img src="images/trigger3.png" alt="choose the input type" width="500"/>
 
-![](images/4.PNG)
+Choose ```Number``` for Brightness, Red, Green, Blue options.
+<img src="images/trigger4.png" alt="choose the input type" width="500"/>
 
-Add inputs as below (```Light On: Yes/No```, ```Brightness: number```, ```Red: number```, ```Green: number```, ```Blue: number```)
+Add different input options as below:
+- Light On: Yes/No
+- Brightness: 1-100
+- Red: 0-255
+- Green: 0-255
+- Blue: 0-255
 
-![](images/5.PNG)
+<img src="images/trigger5.png" alt="type in inputs" width="500"/>
 
-# Add Microsoft Flow action
+# Add new action
 
-1. Click ```+``` below the trigger
-2. create an action
-3. Search ```Yeelight```
+1. Click ```+ New step```
+2. Create an action
+3. In search bar, search ```Yeelight```
 4. Select ```Discover```
 
-![](images/6.PNG)
+<img src="images/trigger6.png" alt="Yeelight Discover" width="500"/>
 
 5. Repeat **1-4**
 6. Select ```Switch```
