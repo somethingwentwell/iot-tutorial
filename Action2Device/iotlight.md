@@ -77,7 +77,7 @@ You need to sign in with your Mi Account.
 3. Select ```Color```
 4. Fill in ```did```, ```region``` and ```type``` from ```Dynamic content: Discover``` as below:
 
-<img src="images/10.png" alt="Yeelight" width="500"/>
+<img src="images/10.PNG" alt="Yeelight" width="500"/>
 
 5. In ```spectrumRGB```, click the tab ```Expression```
 6. In ```fx``` field, copy and paste the formula<sup>[#1](#1)</sup>:
