@@ -102,45 +102,36 @@ After created the ```onmicrosoft.com``` account, we need an active subscription 
 ## Step 3 - Create Device Template View
 
 1. In "ReButton" template, click "Overview" under "Views".
-2. In "Edit view", you can delete the previous blocks on left hand side. Then  
+2. In "Edit view", you can delete the previous blocks on left hand side.
 
 <img src="images/i-02.png" alt="IoT Button Tutorial" width="700"/>
 
-## Step 5 - IoT Button Measurements Configuration
+3. In "Telemetry", select "Action number", then click ```Add tile```. Repeat the step and select "Battery voltage", "Message" respectively. 
 
-In order to send Device to Cloud (D2C) message to Azure IoT Central, save device provisioning information in IoT button.
+<img src="images/i-03.png" alt="IoT Button Tutorial" width="200"/>
 
-| Type|Field Name| Values|
-|-|-| -|
-|Telemetry|batteryVoltage|Battery Voltage Level (Volt)|
-|State|actionNum|1:Single click, 2:Double click, 3:Triple click, 10:Long press, 11:Super long press|
-|Event|message||
+4. After editing, click ```Save``` and ```Publish```, confirm the publish information and click ```Publish``` again.
 
+<img src="images/i-04.png" alt="IoT Button Tutorial" width="500"/>
 
-1. Create a device in Azure IoT Central.
+## Step 4 - Create Device
+
+1. Create a device in your ReButton template, in "Devices" select the "ReButton" template and click ```+ New```. Then confirm the information and click ```Create```.
+
+<img src="images/i-05.png" alt="IoT Button Tutorial" width="500"/>
 
 2. Click ```Connect``` on Top Right corner of Azure IoT Central page.
 
-![](images/8.png)
+<img src="images/i-06.png" alt="IoT Button Tutorial" width="600"/>
 
 3. Copy 3 values.
 ```Scope ID```
 ```Device ID```
 ```Primary Key```
 
-![](images/9.png)
+<img src="images/9.png" alt="IoT Button Tutorial" width="400"/>
 
-4. Browse to IoT button - Home page then click ```Azure IoT Central```.
-5. Enter ```Scope ID```, ```Device ID```, ```SAS Key``` from Azure IoT Central.
-6. Click ```Save```.
-
-![](images/10.png)
-
-5. Go to the resource, mark down your ```IoT Central Application URL```. Click the link and access your IoT Central.
-
-![](images/16.PNG)
-
-## Step 1 - Getting access to IoT button
+## Step 5 - Getting access to IoT button
 
 Use AP Mode (Access Point Mode) to configure IoT button. **To avoid battery drain, IoT button will automatically shutdown in 10 minutes, at AP mode.** So that we recommend you to setup IoT Hub or IoT Central, first.
 
@@ -154,40 +145,47 @@ When IoT button successfully boots into AP Mode, RGB LED will blink in White.
 Look for Wi-Fi Access Point ```AZB-xxxxxxxxxxxx``` and connect to it from your PC.
 (```xxxxxxxxxxxx``` is MAC address of your IoT button Wi-Fi.)
 
-![](images/2.png)
+<img src="images/2.png" alt="IoT Button Tutorial" width="300"/>
 
 Use a Web Browser to access IoT button - Home at ```http://192.168.0.1.```
-![](images/3.png)
 
-## Step 2 - Wi-Fi Configuration
+<img src="images/3.png" alt="IoT Button Tutorial" width="400"/>
+
+## Step 6 - Wi-Fi Configuration
 
 Configure Wi-Fi settings to connect to Internet.
 
 1. Click ```Wi-Fi``` at IoT button - Home.
 
-![](images/4.png)
+<img src="images/4.png" alt="IoT Button Tutorial" width="400"/>
 
 2. Select your Wi-Fi Access Point from ```Wi-Fi SSID``` list.
 If you do not see your Access Point, refresh browser.
 3. Enter ```Wi-Fi Passphrase``` for your Wi-Fi AP.
-4. In case you would like to use specific Internet ```Time Server```, enter FQDN to Time Server.
+4. (Optional) In case you would like to use specific Internet ```Time Server```, enter FQDN to Time Server.
 Default Internet Time Server is pool.ntp.org -> cn.pool.ntp.org -> europe.pool.ntp.org -> asia.pool.ntp.org -> oceania.pool.ntp.org .
 
 5. Click ```Save```.
 
+## Step 7 - Azure IoT Central Configuration
 
+1. Browse to IoT button - Home page then click ```Azure IoT Central```.
+2. Enter ```Scope ID```, ```Device ID```, ```SAS Key``` from Azure IoT Central.
+3. Click ```Save```.
 
-## Step 6 - Power Off
+<img src="images/10.png" alt="IoT Button Tutorial" width="400"/>
+
+## Step 8 - Power Off
 
 Exit AP Mode and power off IoT button.
 
 Click ```Shutdown``` button.
 
-## Step 7 - Create Excel table
+## Step 9 - Create Excel table
 
 1. Go to [OneDrive](https://onedrive.live.com/) and create Excel workbook
 
-![](images/11.PNG)
+<img src="images/11.png" alt="IoT Button Tutorial" width="400"/>
 
 2. Follow the column name below
 
@@ -196,50 +194,60 @@ Click ```Shutdown``` button.
 
 3. Click ```Format as Table```
 
-![](images/12.PNG)
+<img src="images/12.png" alt="IoT Button Tutorial" width="600"/>
 
 
-## Step 8 - Create event-based rule
+## Step 10 - Create event-based rule
 
-1. Access ```IoT Application URL```
-2. To add a new event-based rule to your application, in the left navigation menu, select Device Templates.
+1. Go back to ```IoT Application URL```.
 
-![](images/17.PNG)
+2. To add a new event-based rule to your application, in the left navigation menu, select "Rules" and click ```+New```.
 
-3. To customize your device template, select the template you created in the previous tutorial.
-4. To add a event-based rule in the Rules view, select Rules, select + New Rule, and then select Event:
+<img src="images/i-07.png" alt="IoT Button Tutorial" width="250"/>
 
-![](images/18.PNG)
+3. Give a name to this rule, "Device template" select ```ReButton```. In "Conditions", "Telemetry" select ```Message```, "Operator" choose ```Contains``` and "Value" select ```Any```. When every message appears will be triggering this rule to run.
 
-5. To define your rule, use the information in the following image:
+4. Confirm the information and click ```Save```.
 
-![](images/19.PNG)
+<img src="images/i-08.png" alt="IoT Button Tutorial" width="700"/>
 
-6. Click ```Save```
+## Step 11 - Add Microsoft Power Automate as Action
 
-## Step 8 - Add Microsoft Flow as Action
+1. To create flow, in [Power Automate](https://asia.flow.microsoft.com/en-us/), goto "Create" and click ```Instant flow```.
 
-1. Add Microsoft Flow Action in saved event rule
+<img src="images/create.png" alt="Create flow" width="500"/>
 
-![](images/20.PNG)
+2. A "Build an instant flow" box will show, click ```skip```.
 
-2. Create Flow from blank in Microsoft Flow page
+<img src="images/create2.png" alt="skip flow" width="500"/>
 
-![](images/21.PNG)
-![](images/22.PNG)
+3. Choose, the trigger, in search bar, type ```flow```, select the trigger ```Manually trigger a flow```.
 
-3. Search ```IoT Central``` and click ```When a rule is fired```
+4. Search ```IoT Central``` and click ```When a rule is fired```. (Note: Choose "Azure IoT Central V3")
 
-![](images/23.PNG)
+<img src="images/i-09.png" alt="IoT Button tutorial" width="500"/>
 
-4. Click the dropdown and select the ```Application``` and ```Rule```
+5. You may require to start the free trial, click ```Start trial``` and login with your ```onmicrosoft.com``` account.
 
-![](images/24.PNG)
+<img src="images/i-10.png" alt="IoT Button tutorial" width="400"/>
 
-5. Search ```Excel``` and add an action ```Add a row in a table```
+6. Click the dropdown and select the ```Application``` and ```Rule```
 
-![](images/25.PNG)
+<img src="images/i-11.png" alt="IoT Button tutorial" width="500"/>
 
-6. Follow the information in below image and complete the Flow 
+7. Click ```+ New step``` and search ```Excel```. Select ```Excel Online (Business)```, add an action ```Add a row in a table```.
 
-![](images/26.PNG)
+<img src="images/i-12.png" alt="IoT Button tutorial" width="500"/>
+
+6. Fill in the information below:
+- Device: Device Name
+- Action: PushButton Message
+- Time: Webhook Timespamp 
+
+You may find the information in "Dynamic content", the field under "When a rule is fired".
+
+<img src="images/i-13.png" alt="IoT Button tutorial" width="500"/>
+
+7. Click ```Save``` on the top right corner and test your flow by pressing the ReButton.
+
+<img src="images/i-14.png" alt="IoT Button tutorial" width="700"/>
