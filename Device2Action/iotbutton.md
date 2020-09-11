@@ -1,89 +1,112 @@
-# Build IoT solutions with IoT Button
+# IoT Button
 
-This is a tutorial to build solution with IoT button which integrate with excel online. You can keep them around your home and track data about your daily life like video below.
+In this tutorial, we will try to connect ReButton with Azure IoT Central and integrate with Power Automate to provide different IoT solutions.
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=qKSqV44RZ3E
-" target="_blank"><img src="http://img.youtube.com/vi/qKSqV44RZ3E/0.jpg" border="10" /></a>
+# About ReButton
+Build IoT solutions with IoT Button!
 
-# Key Concept
-1. When you push IoT button, it will power up and connect to Internet via pre-configured Wi-Fi.
-2. IoT button will send Device to Cloud Message to pre-configured Azure IoT Central.
-3. Microsoft Flow will be triggered when received Cloud Message 
-4. After D2C message is sent, IoT button will shutdown.
+Seeed [ReButton](https://seeedjp.github.io/ReButton/) is a developer device for simple trigger actions, supporting multiple clicks and long press.
+In addition, you can connect Seeed Grove sensors to add more data points.
+
+1. When you push ReButton, it will power up and connect to Internet via pre-configured Wi-Fi.
+2. ReButton will receive Device Twin changes from pre-configured Azure IoT Central or Azure IoT Hub.
+3. ReButton will send Device to Cloud Message to pre-configured Azure IoT Central or Azure IoT Hub.
+4. After D2C message is sent, ReButton will shutdown.
 
 ![](images/1.png)
 
-Part of tutorial based on [Docs for ReButton](https://seeedjp.github.io/ReButton/) and [IoT Central Documentation](https://docs.microsoft.com/en-us/azure/iot-central/)
+Note: Part of tutorial based on [Docs for ReButton](https://seeedjp.github.io/ReButton/) and [IoT Central Documentation](https://docs.microsoft.com/en-us/azure/iot-central/) with the update of Azure IoT Central V3.
 
-# Step 1 - Getting access to IoT button
+# Prerequisites
+## Join the Microsoft 365 Developer Program
+1. Goto [Microsoft 365 Dev Center](https://developer.microsoft.com/en-us/microsoft-365/dev-program) and click ```Join Now```
 
-Use AP Mode (Access Point Mode) to configure IoT button. **To avoid battery drain, IoT button will automatically shutdown in 10 minutes, at AP mode.** So that we recommend you to setup IoT Hub or IoT Central, first.
+<img src="images/p-1.png" alt="Join Microsoft 365 Dev Program" width="500"/>
 
-1. **Hold button until RGB LED turns into White.**
-RGB LED will start with Blue, Yellow, Cyan, then White. This will take about 10 seconds.
+2. Login with your personal Microsoft account, you could create one if you do not have Microsoft account.
 
-2. **Release button and confirm IoT button is in AP mode.**
-When IoT button successfully boots into AP Mode, RGB LED will blink in White.
+<img src="images/p-2.png" alt="Join Microsoft 365 Dev Program" width="300"/>
 
-3. **Connect to AP.**
-Look for Wi-Fi Access Point ```AZB-xxxxxxxxxxxx``` and connect to it from your PC.
-(```xxxxxxxxxxxx``` is MAC address of your IoT button Wi-Fi.)
+2.1 If you see this message, your account may missing some information, mostly will be the full name of the account.
 
-![](images/2.png)
+<img src="images/p-3.png" alt="Join Microsoft 365 Dev Program" width="300"/>
 
-Use a Web Browser to access IoT button - Home at ```http://192.168.0.1.```
-![](images/3.png)
+2.2 Click the top-right corner to view your account information and click ```Add your name```.
 
-# Step 2 - Wi-Fi Configuration
+<img src="images/p-4.png" alt="Join Microsoft 365 Dev Program" width="300"/>
 
-Configure Wi-Fi settings to connect to Internet.
+2.3 Fill in your first name and last name, then click ```Save```, sign out and login agin at [Microsoft 365 Dev Center](https://developer.microsoft.com/en-us/microsoft-365/dev-program) to continue.
 
-1. Click ```Wi-Fi``` at IoT button - Home.
+<img src="images/p-5.png" alt="Join Microsoft 365 Dev Program" width="500"/>
 
-![](images/4.png)
+3. Follow the instructions and complete all the fields needed.
 
-2. Select your Wi-Fi Access Point from ```Wi-Fi SSID``` list.
-If you do not see your Access Point, refresh browser.
-3. Enter ```Wi-Fi Passphrase``` for your Wi-Fi AP.
-4. In case you would like to use specific Internet ```Time Server```, enter FQDN to Time Server.
-Default Internet Time Server is pool.ntp.org -> cn.pool.ntp.org -> europe.pool.ntp.org -> asia.pool.ntp.org -> oceania.pool.ntp.org .
+<img src="images/p-6.png" alt="Join Microsoft 365 Dev Program" height="250"/> <img src="images/p-7.png" alt="Join Microsoft 365 Dev Program" height="250"/>
 
-5. Click ```Save```.
+4. Click ```SET UP E5 SUBSCRIPTION```
 
-# Step 3 - Create IoT Central
+<img src="images/p-8.png" alt="Join Microsoft 365 Dev Program" width="500"/>
+
+5. Fill in the information, for username will suggest "admin", for domain please choose a domain name which is not yet be chosen by anyone. You will create an account ```admin@yourdomain.onmicrosoft.com```, we will use this account for following labs and tutorials, so keep your password and account in safe. Click ```Continue``` and add your phone number for verification.
+
+<img src="images/p-9.png" alt="Join Microsoft 365 Dev Program" width="250"/>
+
+6. You have successfully created your Microsoft 365 developer account with E5 subscription, to know more about E5 subscription please visit [this link](https://www.microsoft.com/en-us/microsoft-365/enterprise/e5).
+
+<img src="images/p-10.png" alt="Join Microsoft 365 Dev Program" width="250"/>
+
+### Reference
+- [Welcome to the Microsoft 365 Developer Program](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program)
+
+- [Set up a Microsoft 365 developer subscription](https://docs.microsoft.com/en-us/office/developer-program/microsoft-365-developer-program-get-started)
+
+---
+
+## Redeem the Azure Pass
+After created the ```onmicrosoft.com``` account, we need an active subscription for creating the IoT Central in Azure.
+
+1. Visit [Azure Pass](https://www.microsoftazurepass.com/) website, click ```Start``` and login with your ```onmicrosoft.com``` account.
+
+2. Confirm your email address is correct, then click ```Confirm``` and enter your Azure Pass promotion code, click ```Claim Promo Code```.
+
+<img src="images/r-1.png" alt="IoT Button Tutorial" width="500"/>
+
+3. Follow the instruction and fill in the information, you will be redirected to the [Azure Portal](https://portal.azure.com/).
+
+# Getting Started
+## Step 1 - Create IoT Central
 
 1. Sign in [Azure Portal](https://portal.azure.com/)
 2. Click ```Create a resource``` and search ```IoT Central Application```
 
-![](images/13.PNG)
+<img src="images/13.PNG" alt="IoT Button Tutorial" width="500"/>
 
 3. Create ```IoT Central Application```
 
-![](images/14.PNG)
+<img src="images/14.PNG" alt="IoT Button Tutorial" width="500"/>
 
-4. Fill in ```resource name```, ```Application URL```, and set template as ```Custom Application```. Then click ```create```.
+4. Fill in ```resource name```, ```Application URL```, and set template as ```Custom Application```. Pricing plan can choose either ```Standard 1``` or ```Standard 2```. Then click ```create```.
 
-![](images/15.PNG)
+<img src="images/15.PNG" alt="IoT Button Tutorial" width="400"/>
 
-5. Go to the resource, mark down your ```IoT Application URL```
+## Step 2 - Create ReButton Template
 
-![](images/16.PNG)
-
-# Step 4 - Create IoT Central device template
-
-1. Access ```IoT Application URL```
+1. Access ```IoT Application URL``` and login with your Microsoft Account.
 2. Navigate to the Device Templates page.
-3. To create a template, start by selecting +New.
-4. Select Custom, enter a name, and click Create to build your own template from scratch.
+3. Create the ReButton device temmplate by clicking the ```+ New``` button.
+4. Scroll down and find "ReButton", select it and click ```Next: Review```.
+5. Confirm the information and click ```Create```.
 
-#### Measurements
-Measurements are the data that comes from your device. You can add multiple measurements to your device template to match the capabilities of your device. 
+<img src="images/i-01.png" alt="IoT Button Tutorial" width="700"/>
 
-+ **Telemetry** measurements are the numerical data points that your device collects over time. They're represented as a continuous stream. An example is temperature.
-+ **Event** measurements are point-in-time data that represents something of significance on the device. A severity level represents the importance of an event. An example is a fan motor error.
-+ **State** measurements represent the state of the device or its components over a period of time. For example, a fan mode can be defined as having Operating and Stopped as the two possible states.
+## Step 3 - Create Device Template View
 
-# Step 5 - IoT Button Measurements Configuration
+1. In "ReButton" template, click "Overview" under "Views".
+2. In "Edit view", you can delete the previous blocks on left hand side. Then  
+
+<img src="images/i-02.png" alt="IoT Button Tutorial" width="700"/>
+
+## Step 5 - IoT Button Measurements Configuration
 
 In order to send Device to Cloud (D2C) message to Azure IoT Central, save device provisioning information in IoT button.
 
@@ -93,23 +116,6 @@ In order to send Device to Cloud (D2C) message to Azure IoT Central, save device
 |State|actionNum|1:Single click, 2:Double click, 3:Triple click, 10:Long press, 11:Super long press|
 |Event|message||
 
-#### Telemetry
-
-To add a new telemetry measurement, select + New Measurement, choose Telemetry as the measurement type, and enter the details on the form.
-
-![](images/5.png)
-
-#### State
-
-To add a new state measurement, select the + New Measurement button and select State as the measurement type. Enter the details on the Create State form.
-
-![](images/6.png)
-
-#### Event
-
-To add a new event measurement, select + New Measurement and select Event as the measurement type. Enter the details on the Create Event form.
-
-![](images/7.png)
 
 1. Create a device in Azure IoT Central.
 
@@ -130,13 +136,54 @@ To add a new event measurement, select + New Measurement and select Event as the
 
 ![](images/10.png)
 
-# Step 6 - Power Off
+5. Go to the resource, mark down your ```IoT Central Application URL```. Click the link and access your IoT Central.
+
+![](images/16.PNG)
+
+## Step 1 - Getting access to IoT button
+
+Use AP Mode (Access Point Mode) to configure IoT button. **To avoid battery drain, IoT button will automatically shutdown in 10 minutes, at AP mode.** So that we recommend you to setup IoT Hub or IoT Central, first.
+
+1. **Hold button until RGB LED turns into White.**
+RGB LED will start with Blue, Yellow, Cyan, then White. This will take about 10 seconds.
+
+2. **Release button and confirm IoT button is in AP mode.**
+When IoT button successfully boots into AP Mode, RGB LED will blink in White.
+
+3. **Connect to AP.**
+Look for Wi-Fi Access Point ```AZB-xxxxxxxxxxxx``` and connect to it from your PC.
+(```xxxxxxxxxxxx``` is MAC address of your IoT button Wi-Fi.)
+
+![](images/2.png)
+
+Use a Web Browser to access IoT button - Home at ```http://192.168.0.1.```
+![](images/3.png)
+
+## Step 2 - Wi-Fi Configuration
+
+Configure Wi-Fi settings to connect to Internet.
+
+1. Click ```Wi-Fi``` at IoT button - Home.
+
+![](images/4.png)
+
+2. Select your Wi-Fi Access Point from ```Wi-Fi SSID``` list.
+If you do not see your Access Point, refresh browser.
+3. Enter ```Wi-Fi Passphrase``` for your Wi-Fi AP.
+4. In case you would like to use specific Internet ```Time Server```, enter FQDN to Time Server.
+Default Internet Time Server is pool.ntp.org -> cn.pool.ntp.org -> europe.pool.ntp.org -> asia.pool.ntp.org -> oceania.pool.ntp.org .
+
+5. Click ```Save```.
+
+
+
+## Step 6 - Power Off
 
 Exit AP Mode and power off IoT button.
 
 Click ```Shutdown``` button.
 
-# Step 7 - Create Excel table
+## Step 7 - Create Excel table
 
 1. Go to [OneDrive](https://onedrive.live.com/) and create Excel workbook
 
@@ -152,7 +199,7 @@ Click ```Shutdown``` button.
 ![](images/12.PNG)
 
 
-# Step 8 - Create event-based rule
+## Step 8 - Create event-based rule
 
 1. Access ```IoT Application URL```
 2. To add a new event-based rule to your application, in the left navigation menu, select Device Templates.
@@ -170,7 +217,7 @@ Click ```Shutdown``` button.
 
 6. Click ```Save```
 
-# Step 8 - Add Microsoft Flow as Action
+## Step 8 - Add Microsoft Flow as Action
 
 1. Add Microsoft Flow Action in saved event rule
 
