@@ -185,7 +185,7 @@ Click ```Shutdown``` button.
 
 1. Go to [OneDrive](https://onedrive.live.com/) and create Excel workbook
 
-<img src="images/11.png" alt="IoT Button Tutorial" width="400"/>
+<img src="images/11.PNG" alt="IoT Button Tutorial" width="400"/>
 
 2. Follow the column name below
 
@@ -194,7 +194,7 @@ Click ```Shutdown``` button.
 
 3. Click ```Format as Table```
 
-<img src="images/12.png" alt="IoT Button Tutorial" width="600"/>
+<img src="images/12.PNG" alt="IoT Button Tutorial" width="600"/>
 
 
 ## Step 10 - Create event-based rule
